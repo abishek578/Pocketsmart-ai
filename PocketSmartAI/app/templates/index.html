@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}PocketSmart AI — Smart Budget Planning{% endblock %}
+{% block content %}
+<section class="hero"><div><p class="eyebrow">GENAI BUDGET ASSISTANT</p><h1>Plan smarter. Spend with purpose.</h1><p class="lead">Create budget-aware plans for your home, parties and jewelry. Get structured suggestions with retailer search links and optional AI image analysis.</p><div class="actions">{% if user %}<a class="button" href="/dashboard">Open Dashboard</a>{% else %}<a class="button" href="/register">Create Account</a><a class="button secondary" href="/login">Sign In</a>{% endif %}</div></div>
+<div class="hero-card"><div class="mini-stat"><strong>3</strong><span>Smart planners</span></div><div class="mini-stat"><strong>AI</strong><span>Gemini-powered</span></div><div class="mini-stat"><strong>₹</strong><span>Budget-first</span></div></div></section>
+<section class="grid three"><article class="feature"><div class="icon">⌂</div><h3>Home Interior</h3><p>Allocate your budget across furniture, lighting and decor with style preferences.</p></article><article class="feature"><div class="icon">✦</div><h3>Party Planner</h3><p>Plan venue, catering, decoration and entertainment around your guest count.</p></article><article class="feature"><div class="icon">◇</div><h3>Jewelry Match</h3><p>Choose occasion and style, with an optional outfit image for multimodal analysis.</p></article></section>
+{% endblock %}

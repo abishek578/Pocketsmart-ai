@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Recommendation #{{ recommendation.id }} — PocketSmart AI{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">{{ recommendation.planner_type|upper }} PLAN</p><h1>Recommendation #{{ recommendation.id }}</h1><p class="muted">{{ recommendation.created_at }}</p></div><a class="button secondary" href="/history-page">Back to History</a></div>
+<div class="panel"><div class="panel-head"><h2>Saved recommendation</h2><span class="tag">{{ result.mode }} mode</span></div><p>Total budget: <strong>{{ "%.0f"|format(result.total_budget) }}</strong> · Remaining: <strong>{{ "%.0f"|format(result.remaining_budget) }}</strong></p></div>
+{% for category in result.budget_breakdown %}
+<section class="result-category"><div class="panel-head"><h3>{{ category.category }}</h3><strong>₹{{ "%.0f"|format(category.allocation) }}</strong></div>
+{% for item in category["items"] %}<article class="recommendation"><div><span class="tag">{{ item.item_type }}</span><h4>{{ item.name }}</h4><p>{{ item.description }}</p></div><div class="price">₹{{ "%.0f"|format(item.estimated_price) }} × {{ item.quantity }}</div><div class="chips">{% for name,url in item["shopping_links"].items() %}<a class="chip" href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ name }}</a>{% endfor %}</div><small>Search: {{ item.search_terms }}</small></article>{% endfor %}</section>
+{% endfor %}
+{% if result.warnings %}<div class="warning"><strong>Notes</strong><ul>{% for x in result.warnings %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% if result.styling_tips %}<div class="info-box"><strong>Tips</strong><ul>{% for x in result.styling_tips %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+{% endblock %}
